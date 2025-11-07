@@ -28,6 +28,9 @@ buttonKissMateo.addEventListener('click', (event) => {
         createKissAnimation(event.clientX - 25, event.clientY - 25);
         contador++
         textKissMateo.textContent = contador
+        if (contador > 5){
+            textKissMateo.style.color = "#db7093"
+        }
     } else if (!limite) {
         // Mover la imagen arriba del texto y apilar el layout en columna
         if (pageContainer && imageContainer && textContainer) {
@@ -44,6 +47,7 @@ buttonKissMateo.addEventListener('click', (event) => {
         alert("Mucho!")
         textTeo.textContent = ""
         textKissMateo.textContent = "¡Ya no te lo puedes besar!"
+        textKissMateo.style.color = "#FFFF"
         buttonKissMateo.textContent = "Muchos besos por hoy!"
         limite = true
     } else {
