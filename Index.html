@@ -67,6 +67,63 @@
                 filter: drop-shadow(0 2px 6px rgba(0,0,0,0.6));
             }
 
+            /* Responsive: ajustes para pantallas pequeñas (móviles) */
+            @media (max-width: 800px) {
+                .page-container {
+                    flex-direction: column;
+                    padding: 20px;
+                    gap: 20px;
+                }
+
+                .image-container {
+                    width: 90vw;
+                    height: auto;
+                    max-width: 420px;
+                }
+
+                .container {
+                    width: 90vw;
+                    max-width: 420px;
+                }
+
+                .two-photos {
+                    flex-direction: column;
+                    height: auto;
+                }
+
+                .two-photos img {
+                    width: 100%;
+                    height: auto;
+                    border-radius: 12px;
+                }
+
+                .heart-center {
+                    font-size: 40px;
+                    top: 50%;
+                }
+
+                h1#kissTeo {
+                    font-size: 1.2rem;
+                    text-align: center;
+                }
+
+                #p1 {
+                    font-size: 2.2rem;
+                    text-align: center;
+                }
+
+                button {
+                    width: 100%;
+                    max-width: none;
+                    padding: 16px;
+                    font-size: 1rem;
+                }
+
+                .kiss-animation {
+                    font-size: 36px;
+                }
+            }
+
             h1{
             color: white;
             margin: 0;
