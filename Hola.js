@@ -28,8 +28,11 @@ buttonKissMateo.addEventListener('click', (event) => {
         createKissAnimation(event.clientX - 25, event.clientY - 25);
         contador++
         textKissMateo.textContent = contador
-        if (contador > 5){
-            textKissMateo.style.color = "#db7093"
+        if (contador > 5) {
+            textKissMateo.style.color = "#ff69b4"
+            buttonKissMateo.classList.add('pink')
+            textTeo.textContent = "¡Ehg, pero te gusto!"
+            textTeo.classList.add('pinkText')
         }
     } else if (!limite) {
         // Mover la imagen arriba del texto y apilar el layout en columna
@@ -46,7 +49,7 @@ buttonKissMateo.addEventListener('click', (event) => {
         textTeo.textContent = ""
         textKissMateo.textContent = "¡Ya no te lo puedes besar!"
         textKissMateo.style.color = "#FFFF"
-        buttonKissMateo.textContent = "Muchos besos por hoy!"
+        buttonKissMateo.classList.remove('pink')  // Remove pink class when limit reached
         limite = true
     } else {
         // Mostrar las dos fotos juntas con un corazón en el medio
