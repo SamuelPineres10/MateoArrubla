@@ -43,8 +43,6 @@ buttonKissMateo.addEventListener('click', (event) => {
             imageContainer.style.height = '200px';
             imageContainer.style.marginBottom = '20px';
         }
-
-        alert("Mucho!")
         textTeo.textContent = ""
         textKissMateo.textContent = "¡Ya no te lo puedes besar!"
         textKissMateo.style.color = "#FFFF"
