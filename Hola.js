@@ -26,7 +26,7 @@ function createKissAnimation(x, y) {
 }
 
 buttonKissMateo.addEventListener('click', (event) => {
-    if (contador < 10) {
+    if (contador < 8) {
         createKissAnimation(event.clientX - 25, event.clientY - 25);
         contador++
         textKissMateo.textContent = contador
@@ -98,7 +98,7 @@ buttonKissMateo.addEventListener('click', (event) => {
         }
 
         textKissMateo.style.fontSize = "40px";
-        textKissMateo.textContent = "¿Por que te lo quieres seguir besando? ¡Es de Ximena Naranjo!";
+        textKissMateo.textContent = "¿Por que te lo quieres seguir besando? ¡Es de Valen Betancur!";
         buttonKissMateo.textContent = "Cansona!";
         hash = true
         if (noMoreMsg) noMoreMsg.style.display = 'none';
