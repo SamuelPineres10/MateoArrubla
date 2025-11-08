@@ -118,16 +118,3 @@ buttonKissMateo.addEventListener('mouseleave', () => {
 });
 
 // Also support touch devices: show the message on touchstart and hide shortly after touchend
-buttonKissMateo.addEventListener('touchstart', () => {
-    if (limite && noMoreMsg) {
-        noMoreMsg.style.display = 'block';
-    }
-}, {passive: true});
-buttonKissMateo.addEventListener('touchend', () => {
-    if (limite && noMoreMsg) {
-        // keep it visible briefly so the user notices it
-        setTimeout(() => {
-            noMoreMsg.style.display = 'none';
-        }, 1400);
-    }
-});
