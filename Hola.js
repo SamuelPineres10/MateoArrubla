@@ -4,11 +4,13 @@ let textTeo = document.getElementById("kissTeo")
 
 let contador = 0
 let limite = false
+let hash = false
 textKissMateo.textContent = contador
 textKissMateo.style.fontSize = "60px" 
 const pageContainer = document.querySelector('.page-container');
 const imageContainer = document.querySelector('.image-container');
 const textContainer = document.querySelector('.container');
+let noMoreMsg = document.getElementById('noMoreMsg');
 
 function createKissAnimation(x, y) {
     const kiss = document.createElement('div');
@@ -51,6 +53,7 @@ buttonKissMateo.addEventListener('click', (event) => {
         textKissMateo.style.color = "#FFFF"
         buttonKissMateo.classList.remove('pink')  // Remove pink class when limit reached
         limite = true
+        if (noMoreMsg) noMoreMsg.style.display = 'none';
     } else {
         // Mostrar las dos fotos juntas con un corazón en el medio
         if (imageContainer) {
@@ -71,6 +74,9 @@ buttonKissMateo.addEventListener('click', (event) => {
                 if (!img2 && imgs[0]) img2 = imgs[0].cloneNode(true);
 
                 // Vaciar imageContainer y poner el wrapper
+                // Remove the `secondary` class from clones so they are visible when appended
+                if (img1) img1.classList && img1.classList.remove && img1.classList.remove('secondary');
+                if (img2) img2.classList && img2.classList.remove && img2.classList.remove('secondary');
                 imageContainer.innerHTML = '';
                 if (img1) two.appendChild(img1);
                 if (img2) two.appendChild(img2);
@@ -94,5 +100,34 @@ buttonKissMateo.addEventListener('click', (event) => {
         textKissMateo.style.fontSize = "40px";
         textKissMateo.textContent = "¿Por que te lo quieres seguir besando? ¡Es de Ximena Naranjo!";
         buttonKissMateo.textContent = "Cansona!";
+        hash = true
+        if (noMoreMsg) noMoreMsg.style.display = 'none';
     }
 })
+
+// Mostrar/ocultar mensaje al pasar el mouse por el botón cuando limite=true
+buttonKissMateo.addEventListener('mouseenter', () => {
+    if (hash && noMoreMsg) {
+        noMoreMsg.style.display = 'block';
+    }
+});
+buttonKissMateo.addEventListener('mouseleave', () => {
+    if (hash && noMoreMsg) {
+        noMoreMsg.style.display = 'none';
+    }
+});
+
+// Also support touch devices: show the message on touchstart and hide shortly after touchend
+buttonKissMateo.addEventListener('touchstart', () => {
+    if (limite && noMoreMsg) {
+        noMoreMsg.style.display = 'block';
+    }
+}, {passive: true});
+buttonKissMateo.addEventListener('touchend', () => {
+    if (limite && noMoreMsg) {
+        // keep it visible briefly so the user notices it
+        setTimeout(() => {
+            noMoreMsg.style.display = 'none';
+        }, 1400);
+    }
+});

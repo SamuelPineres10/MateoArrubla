@@ -10,7 +10,7 @@
         #particles-js {
             position: absolute;
             width: 100%;
-            height: 100%;
+            height: 120%;
             top: 0;
             left: 0;
             z-index: -1;
@@ -50,6 +50,11 @@
                 height: 100%;
                 object-fit: cover;
             }
+            /* Hide secondary (extra) images by default so only the primary photo shows
+               until the JS flow creates the two-photos view. */
+            .image-container img.secondary {
+                display: none;
+            }
 
             /* Dos fotos lado a lado con corazón en el medio */
             .two-photos {
@@ -88,39 +93,58 @@
                 .page-container {
                     flex-direction: column;
                     padding: 20px;
-                    gap: 20px;
+                    gap: 40px;
                 }
 
                 .image-container {
-                    width: 90vw;
-                    height: auto;
+                    width: 55vw;
+                    height: 55vw;
                     max-width: 420px;
+                    transform: translateY(10%);
                 }
 
                 .container {
-                    width: 90vw;
+                    width: 140vw;
                     max-width: 420px;
+                    transform: translateY(-7%);
+                    margin-top: 5px;
+                    
                 }
 
+                /* Keep two photos side-by-side on mobile just like desktop. Do not
+                   stack them vertically — clones created by JS will not have the
+                   'secondary' class (we remove it in JS), so they'll be visible. */
                 .two-photos {
-                    flex-direction: column;
-                    height: auto;
+                    flex-direction: row;
+                    flex-wrap: nowrap;
+                    height: 50vh;
+                    
+                    
                 }
 
                 .two-photos img {
-                    width: 100%;
-                    height: auto;
-                    border-radius: 12px;
+                    width: 30%;
+                    height: 50%;
+                    object-fit: cover;
+                    border-radius: 5px;
                 }
 
                 .heart-center {
                     font-size: 40px;
-                    top: 50%;
+                    top: 30%;
                 }
 
                 h1#kissTeo {
-                    font-size: 1.2rem;
+                    font-size: 1.5rem;
                     text-align: center;
+                    
+                }
+
+                h1#kissTeo.pinkText {
+                color: #ff69b4;
+                font-size: 1.5rem;
+                transform: scale(1.05);
+                filter: drop-shadow(0px 0px 25px rgb(255, 105, 180));
                 }
 
                 #p1 {
@@ -131,7 +155,7 @@
                 button {
                     width: 100%;
                     max-width: none;
-                    padding: 16px;
+                    padding: 12px;
                     font-size: 1rem;
                 }
 
@@ -172,7 +196,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 20px;
+            gap: 10px;
         }
 
         .kiss-animation {
@@ -203,12 +227,14 @@
 <div class="page-container">
     <div class="image-container">
         <img src="./photos/Imagen de WhatsApp 2025-11-07 a las 11.34.57_539b52eb.jpg" alt="Foto de Mateo">
-        <img src="./photos/Imagen de WhatsApp 2025-11-07 a las 11.52.52_b660319e.jpg" alt="Foto de Xime">
+        <!-- secondary image hidden by default; shown when JS creates the two-photos layout -->
+        <img class="secondary" src="./photos/Imagen de WhatsApp 2025-11-07 a las 11.52.52_b660319e.jpg" alt="Foto de Xime">
     </div>
     <div class="container">
         <h1 id="kissTeo">Dale un beso a Mateo</h1>
         <h1 id="p1"></h1>
         <button id="b1">Besalo</button>
+        <div id="noMoreMsg" style="display:none; color:#ff69b4; font-size:1.1rem; margin-top:10px;">No puedes darle más</div>
     </div>
 </div>
 
